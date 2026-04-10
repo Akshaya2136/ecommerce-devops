@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sundari Closet — Ethnic & Indo-Western Fashion</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Loading Screen -->
+  <div id="loader" class="loader">
+    <div class="loader-inner">
+      <div class="loader-logo">✿</div>
+      <div class="loader-text">Sundari Closet</div>
+      <div class="loader-bar"><div class="loader-fill"></div></div>
+    </div>
+  </div>
+
+  <!-- Scroll to Top -->
+  <button id="scrollTop" class="scroll-top" aria-label="Scroll to top">↑</button>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#" class="brand">
+        <span class="brand-icon">✿</span>
+        <span class="brand-name">Sundari <em>Closet</em></span>
+      </a>
+
+      <div class="search-wrap">
+        <input type="text" id="searchInput" class="search-input" placeholder="Search kurtis, sarees, lehengas…" />
+        <span class="search-icon">⌕</span>
+      </div>
+
+      <div class="nav-actions">
+        <a href="#" class="nav-link" onclick="showSection('home')">Home</a>
+        <a href="#" class="nav-link" onclick="showSection('shop')">Shop</a>
+        <a href="#" class="nav-link" onclick="scrollToCategories()">Categories</a>
+        <button class="wishlist-btn" onclick="openWishlist()" aria-label="Wishlist">
+          <span class="heart-icon">♡</span>
+          <span class="badge" id="wishlistCount">0</span>
+        </button>
+        <button class="cart-btn" onclick="openCart()" aria-label="Cart">
+          <span class="cart-icon">🛍</span>
+          <span class="badge" id="cartCount">0</span>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#" onclick="showSection('home');closeMobileMenu()">Home</a>
+      <a href="#" onclick="showSection('shop');closeMobileMenu()">Shop</a>
+      <a href="#" onclick="scrollToCategories();closeMobileMenu()">Categories</a>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="heroSection">
+      <div class="hero-bg-pattern"></div>
+      <div class="hero-content">
+        <p class="hero-eyebrow">✦ New Arrivals 2026 ✦</p>
+        <h1 class="hero-title">
+          Festive<br/>
+          <em>Collection</em><br/>
+          2026
+        </h1>
+        <p class="hero-subtitle">Handcrafted elegance for the modern Indian woman. From silk sarees to Indo-Western chic.</p>
+        <div class="hero-ctas">
+          <button class="btn-primary" onclick="showSection('shop')">Shop Now</button>
+          <button class="btn-outline" onclick="scrollToCategories()">Explore Categories</button>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><strong>2.4K+</strong><span>Products</span></div>
+          <div class="stat-divider"></div>
+          <div class="stat"><strong>50K+</strong><span>Happy Customers</span></div>
+          <div class="stat-divider"></div>
+          <div class="stat"><strong>Free</strong><span>Shipping ₹999+</span></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card hero-card-1">
+          <div class="hero-card-img" style="background: linear-gradient(135deg, #f8bbd0, #f48fb1);">
+            <span class="hero-card-emoji">👘</span>
+          </div>
+          <p>Banarasi Silk Saree</p>
+          <strong>₹3,499</strong>
+        </div>
+        <div class="hero-card hero-card-2">
+          <div class="hero-card-img" style="background: linear-gradient(135deg, #dcedc8, #aed581);">
+            <span class="hero-card-emoji">✨</span>
+          </div>
+          <p>Festive Lehenga</p>
+          <strong>₹4,299</strong>
+        </div>
+        <div class="hero-card hero-card-3">
+          <div class="hero-card-img" style="background: linear-gradient(135deg, #fff9c4, #ffee58);">
+            <span class="hero-card-emoji">💛</span>
+          </div>
+          <p>Anarkali Kurti</p>
+          <strong>₹999</strong>
+        </div>
+        <div class="hero-floating-badge">🔥 Trending</div>
+      </div>
+    </section>
+
+    <!-- CATEGORIES SECTION -->
+    <section class="categories-section" id="categoriesSection">
+      <div class="section-header">
+        <p class="section-eyebrow">Browse by Style</p>
+        <h2 class="section-title">Shop <em>Categories</em></h2>
+      </div>
+      <div class="categories-grid">
+        <div class="category-card" onclick="filterByCategory('ethnic')" data-cat="ethnic">
+          <div class="cat-visual cat-ethnic">
+            <span>🥻</span>
+          </div>
+          <h3>Ethnic Wear</h3>
+          <p>Sarees, Kurtis, Lehengas</p>
+        </div>
+        <div class="category-card" onclick="filterByCategory('western')" data-cat="western">
+          <div class="cat-visual cat-western">
+            <span>👗</span>
+          </div>
+          <h3>Western Wear</h3>
+          <p>Dresses, Tops, Co-ords</p>
+        </div>
+        <div class="category-card" onclick="filterByCategory('accessories')" data-cat="accessories">
+          <div class="cat-visual cat-accessories">
+            <span>💍</span>
+          </div>
+          <h3>Accessories</h3>
+          <p>Jhumkas, Bangles, Maang-tikka</p>
+        </div>
+        <div class="category-card" onclick="filterByCategory('footwear')" data-cat="footwear">
+          <div class="cat-visual cat-footwear">
+            <span>👡</span>
+          </div>
+          <h3>Footwear</h3>
+          <p>Kolhapuris, Heels, Juttis</p>
+        </div>
+        <div class="category-card" onclick="filterByCategory('bags')" data-cat="bags">
+          <div class="cat-visual cat-bags">
+            <span>👜</span>
+          </div>
+          <h3>Handbags</h3>
+          <p>Potli, Clutch, Tote</p>
+        </div>
+        <div class="category-card" onclick="filterByCategory('')" data-cat="">
+          <div class="cat-visual cat-all">
+            <span>✦</span>
+          </div>
+          <h3>All Products</h3>
+          <p>Browse everything</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FILTER BAR -->
+    <div class="filter-bar" id="filterBar">
+      <div class="filter-inner">
+        <span class="filter-label">Filter:</span>
+        <div class="filter-pills">
+          <button class="pill active" onclick="filterByCategory('')" data-filter="">All</button>
+          <button class="pill" onclick="filterByCategory('ethnic')" data-filter="ethnic">Ethnic Wear</button>
+          <button class="pill" onclick="filterByCategory('western')" data-filter="western">Western Wear</button>
+          <button class="pill" onclick="filterByCategory('accessories')" data-filter="accessories">Accessories</button>
+          <button class="pill" onclick="filterByCategory('footwear')" data-filter="footwear">Footwear</button>
+          <button class="pill" onclick="filterByCategory('bags')" data-filter="bags">Handbags</button>
+        </div>
+        <div class="sort-wrap">
+          <select id="sortSelect" onchange="sortProducts(this.value)">
+            <option value="">Sort by</option>
+            <option value="low">Price: Low to High</option>
+            <option value="high">Price: High to Low</option>
+            <option value="name">Name A–Z</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRODUCTS SECTION -->
+    <section class="products-section" id="shopSection">
+      <div class="section-header">
+        <p class="section-eyebrow">Handpicked for you</p>
+        <h2 class="section-title">Latest <em>Arrivals</em></h2>
+      </div>
+      <div class="masonry-grid" id="productGrid">
+        <!-- Products injected by JS -->
+      </div>
+      <div class="no-results" id="noResults" style="display:none;">
+        <span>🌸</span>
+        <p>No products found. Try a different search.</p>
+      </div>
+    </section>
+
+    <!-- PROMO BANNER -->
+    <section class="promo-banner">
+      <div class="promo-inner">
+        <div class="promo-text">
+          <p class="promo-eyebrow">Limited Time Offer</p>
+          <h2>Get <span>20% OFF</span> on your first order</h2>
+          <p>Use code <strong>SUNDARI20</strong> at checkout</p>
+        </div>
+        <button class="btn-primary" onclick="showSection('shop')">Shop Now ✦</button>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials-section">
+      <div class="section-header">
+        <p class="section-eyebrow">What our customers say</p>
+        <h2 class="section-title">Love from <em>Our Girls</em></h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>"The Banarasi silk saree I ordered was absolutely gorgeous! The quality exceeded my expectations. Will definitely order again."</p>
+          <div class="reviewer">
+            <div class="reviewer-avatar">P</div>
+            <div>
+              <strong>Priya Sharma</strong>
+              <span>Mumbai</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>"Ordered the Navratri lehenga set — the embroidery work is stunning! Got so many compliments. Fast delivery too 💕"</p>
+          <div class="reviewer">
+            <div class="reviewer-avatar">A</div>
+            <div>
+              <strong>Ananya Patel</strong>
+              <span>Ahmedabad</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★☆</div>
+          <p>"The jhumkas and bangles set came beautifully packed. Feels premium. The rose gold finish is exactly as shown in pictures."</p>
+          <div class="reviewer">
+            <div class="reviewer-avatar">R</div>
+            <div>
+              <strong>Ritu Verma</strong>
+              <span>Delhi</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">✿ Sundari Closet</div>
+        <p>Celebrating the beauty and grace of Indian women through thoughtfully curated fashion.</p>
+        <div class="social-links">
+          <a href="#" class="social-btn">📘</a>
+          <a href="#" class="social-btn">📸</a>
+          <a href="#" class="social-btn">🐦</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Shop All</a></li>
+          <li><a href="#">New Arrivals</a></li>
+          <li><a href="#">Sale</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Categories</h4>
+        <ul>
+          <li><a href="#">Ethnic Wear</a></li>
+          <li><a href="#">Accessories</a></li>
+          <li><a href="#">Footwear</a></li>
+          <li><a href="#">Handbags</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Size Guide</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">Track Order</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Sundari Closet. Made with ♡ in India.</p>
+      <p>🔒 Secure Payments &nbsp;|&nbsp; Free Returns &nbsp;|&nbsp; 100% Authentic</p>
+    </div>
+  </footer>
+
+  <!-- CART SIDEBAR -->
+  <div class="overlay" id="overlay" onclick="closeAll()"></div>
+
+  <aside class="cart-sidebar" id="cartSidebar">
+    <div class="sidebar-header">
+      <h3>Your Cart 🛍</h3>
+      <button onclick="closeCart()" class="close-btn">✕</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <!-- filled by JS -->
+    </div>
+    <div class="cart-footer" id="cartFooter">
+      <div class="cart-total">
+        <span>Total:</span>
+        <strong id="cartTotal">₹0</strong>
+      </div>
+      <button class="btn-primary full-width" onclick="checkout()">Proceed to Checkout ✦</button>
+      <button class="btn-outline full-width" onclick="closeCart()">Continue Shopping</button>
+    </div>
+  </aside>
+
+  <!-- WISHLIST SIDEBAR -->
+  <aside class="cart-sidebar wishlist-sidebar" id="wishlistSidebar">
+    <div class="sidebar-header">
+      <h3>Your Wishlist ♡</h3>
+      <button onclick="closeWishlist()" class="close-btn">✕</button>
+    </div>
+    <div class="cart-items" id="wishlistItems">
+      <!-- filled by JS -->
+    </div>
+  </aside>
+
+  <!-- QUICK VIEW MODAL -->
+  <div class="modal-overlay" id="quickViewOverlay" onclick="closeQuickView()">
+    <div class="quick-view-modal" id="quickViewModal" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeQuickView()">✕</button>
+      <div class="qv-content" id="qvContent">
+        <!-- filled by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
